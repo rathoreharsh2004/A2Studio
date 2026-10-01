@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>A2 Studio Spaces — Soulful • Functional • Timeless</title>
+<meta name="description" content="A2 Studio Spaces — Interior Design Studio crafting soulful, functional and timeless spaces across India.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+ --bg:#f4f0e9;--ink:#171714;--muted:#6d685f;--paper:#fbf9f5;--dark:#161614;
+ --accent:#b98b52;--accent2:#e0c08e;--line:rgba(23,23,20,.13);--white:#fffdf9;
+ --max:1220px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:"DM Sans",sans-serif;line-height:1.65;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%;object-fit:cover}
+button,input,textarea,select{font:inherit}
+.container{width:min(92%,var(--max));margin:auto}
+.section{padding:115px 0}
+.eyebrow{font-size:.7rem;text-transform:uppercase;letter-spacing:.24em;font-weight:700;color:var(--accent)}
+h1,h2,h3{font-family:"Cormorant Garamond",serif;line-height:.98}
+h2{font-size:clamp(3rem,6vw,5.5rem);font-weight:600}
+.section-head{max-width:760px;margin-bottom:55px}
+.section-head h2{margin:12px 0 18px}
+.section-head p{color:var(--muted);max-width:620px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid rgba(185,139,82,.65);border-radius:100px;padding:14px 23px;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;transition:.35s;position:relative;overflow:hidden}
+.btn:before{content:"";position:absolute;inset:0;background:var(--accent);transform:translateY(101%);transition:.35s;z-index:0}
+.btn>*{position:relative;z-index:1}
+.btn:hover{color:white;transform:translateY(-3px)}
+.btn:hover:before{transform:translateY(0)}
+.btn.dark{background:var(--dark);color:white;border-color:var(--dark)}
+.btn.dark:before{background:var(--accent)}
+.magnetic{will-change:transform}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:23px 0;transition:.35s}
+.nav.scrolled{background:rgba(244,240,233,.91);backdrop-filter:blur(15px);padding:14px 0;border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-symbol{width:46px;height:46px;border:1px solid var(--ink);display:grid;place-items:center;position:relative;font-family:"Cormorant Garamond";font-size:1.15rem;font-weight:700}
+.logo-symbol:before{content:"";position:absolute;inset:5px;border:1px solid var(--accent)}
+.logo-text strong{display:block;font-family:"Cormorant Garamond";font-size:1.35rem;letter-spacing:.12em}
+.logo-text span{display:block;font-size:.55rem;letter-spacing:.2em;color:var(--muted)}
+.nav-links{display:flex;align-items:center;gap:27px}
+.nav-links a{font-size:.76rem;font-weight:600;transition:.25s}
+.nav-links a:hover{color:var(--accent)}
+.menu{display:none;border:0;background:none;font-size:1.5rem;cursor:pointer}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;background:#161614;color:white;overflow:hidden}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.07);transition:opacity 1s,transform 7s}
+.hero-slide.active{opacity:1;transform:scale(1)}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,12,11,.86),rgba(12,12,11,.45),rgba(12,12,11,.35))}
+.hero-content{position:relative;z-index:2;max-width:950px;padding-top:80px}
+.hero-kicker{display:flex;gap:13px;align-items:center;margin-bottom:20px}
+.hero-kicker i{height:1px;width:48px;background:var(--accent2)}
+.hero h1{font-size:clamp(4.6rem,10vw,9rem);font-weight:600;letter-spacing:-.045em}
+.hero h1 em{color:var(--accent2);font-style:normal}
+.hero-sub{max-width:650px;color:#e6e1d8;font-size:clamp(1rem,2vw,1.25rem);margin:28px 0 35px}
+.hero-actions{display:flex;gap:13px;flex-wrap:wrap}
+.hero .btn{color:white}
+.hero .btn.dark{background:var(--accent);border-color:var(--accent)}
+.hero-bottom{position:absolute;z-index:3;bottom:28px;left:4%;right:4%;display:flex;justify-content:space-between;align-items:end}
+.hero-count{font-size:.68rem;letter-spacing:.18em}
+.dots{display:flex;gap:7px}
+.dots button{border:0;width:35px;height:2px;background:#888;cursor:pointer;transition:.3s}
+.dots button.active{width:62px;background:var(--accent2)}
+
+/* STAT BAR */
+.stats{background:var(--dark);color:white;border-bottom:1px solid rgba(255,255,255,.1)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:31px 25px;border-right:1px solid rgba(255,255,255,.1)}
+.stat:last-child{border:0}.stat strong{font-family:"Cormorant Garamond";font-size:2.3rem;color:var(--accent2);display:block}.stat span{font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:#aaa}
+
+/* ABOUT */
+.about{background:var(--paper)}
+.about-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:75px;align-items:center}
+.about-copy h2{margin:10px 0 22px}
+.about-copy p{color:var(--muted);max-width:570px}
+.signature{margin:32px 0;display:flex;align-items:center;gap:15px;color:var(--accent);font-family:"Cormorant Garamond";font-size:1.45rem}
+.signature i{width:55px;height:1px;background:var(--accent)}
+.about-image{height:650px;position:relative;overflow:hidden}
+.about-image img{height:100%;transition:.8s}
+.about-image:hover img{transform:scale(1.04)}
+.about-badge{position:absolute;right:22px;bottom:22px;background:rgba(20,20,18,.92);color:white;padding:19px 23px;border-left:2px solid var(--accent)}
+.about-badge small{color:var(--accent2);display:block;letter-spacing:.14em;text-transform:uppercase;font-size:.62rem}
+.about-badge strong{font-family:"Cormorant Garamond";font-size:1.35rem}
+
+/* SERVICES */
+.services{background:var(--bg)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.service{min-height:350px;background:#ebe5dc;padding:30px;position:relative;overflow:hidden;transition:.4s}
+.service:hover{transform:translateY(-7px);background:#e4dbce}
+.service-num{font-size:.66rem;color:var(--accent);letter-spacing:.2em}
+.service h3{font-size:2.2rem;margin-top:110px}
+.service p{font-size:.88rem;color:var(--muted);margin-top:12px}
+.service-icon{position:absolute;right:26px;top:25px;width:55px;height:55px;border:1px solid rgba(185,139,82,.5);border-radius:50%;display:grid;place-items:center;color:var(--accent);font-family:"Cormorant Garamond";font-size:1.5rem}
+
+/* PROJECTS */
+.projects{background:#181816;color:white}
+.projects .section-head p{color:#aaa79f}
+.project-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:15px}
+.project{height:500px;position:relative;overflow:hidden}
+.project:nth-child(1){grid-column:span 7}.project:nth-child(2){grid-column:span 5}
+.project:nth-child(3){grid-column:span 5;height:430px}.project:nth-child(4){grid-column:span 7;height:430px}
+.project img{height:100%;transition:.8s}
+.project:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.83))}
+.project:hover img{transform:scale(1.06)}
+.project-info{position:absolute;z-index:2;bottom:25px;left:27px}
+.project-info span{font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent2)}
+.project-info h3{font-size:2.15rem;margin-top:5px}
+
+/* PHILOSOPHY */
+.philosophy{background:var(--paper)}
+.philosophy-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:start}
+.big-line{font-family:"Cormorant Garamond";font-size:clamp(2.5rem,5vw,4.8rem);line-height:1.03}
+.big-line span{color:var(--accent)}
+.principles{display:grid;gap:0}
+.principle{padding:25px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:70px 1fr;gap:15px}
+.principle b{font-family:"Cormorant Garamond";font-size:1.6rem;color:var(--accent)}
+.principle h3{font-size:1.55rem}.principle p{font-size:.86rem;color:var(--muted);margin-top:6px}
+
+/* REVIEWS */
+.reviews{background:#dfd6c9}
+.review-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+.review-main{background:var(--dark);color:white;padding:52px;min-height:370px}
+.stars{color:var(--accent2);letter-spacing:4px;font-size:.85rem}
+.quote{font-family:"Cormorant Garamond";font-size:clamp(2rem,3.8vw,3.6rem);line-height:1.05;margin:28px 0}
+.reviewer{color:#aaa;font-size:.78rem}
+.review-side{display:grid;gap:18px}
+.review-card{background:var(--paper);padding:28px}
+.review-card p{font-family:"Cormorant Garamond";font-size:1.45rem;line-height:1.15;margin:15px 0}
+.review-card span{font-size:.72rem;color:var(--muted)}
+
+/* FAQ */
+.faq{background:var(--paper)}
+.faq-wrap{max-width:900px}
+.faq-item{border-top:1px solid var(--line)}
+.faq-q{width:100%;padding:24px 0;background:none;border:0;text-align:left;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-family:"Cormorant Garamond";font-size:1.45rem;color:var(--ink)}
+.faq-q span{font-family:"DM Sans";font-size:1.1rem;color:var(--accent)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s;color:var(--muted)}
+.faq-a p{padding:0 55px 24px 0}
+.faq-item.open .faq-a{max-height:180px}
+
+/* CONTACT */
+.contact{background:var(--dark);color:white}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:75px}
+.contact .section-head{margin-bottom:35px}
+.contact h2{margin:10px 0 18px}
+.contact-copy{color:#aaa;max-width:550px}
+.details{margin-top:30px;display:grid;gap:17px}
+.detail{display:flex;gap:13px}.detail-icon{width:40px;height:40px;border:1px solid rgba(224,192,142,.4);display:grid;place-items:center;color:var(--accent2);flex:none}
+.detail strong{display:block;font-size:.67rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent2)}
+.detail span{font-size:.86rem;color:#bbb}
+.form{background:#22221f;padding:34px;border:1px solid rgba(255,255,255,.09)}
+.form h3{font-size:2.2rem;margin-bottom:22px}
+.field{margin-bottom:14px}
+.field input,.field textarea,.field select{width:100%;background:#191917;border:1px solid #393933;color:white;padding:15px;outline:none}
+.field textarea{height:120px;resize:vertical}
+.form .btn{width:100%;color:white}
+
+/* MAP */
+.map{height:420px;position:relative;background:#ddd}
+.map iframe{width:100%;height:100%;border:0;filter:grayscale(1) contrast(1.1)}
+.map-card{position:absolute;top:50%;left:5%;transform:translateY(-50%);background:rgba(20,20,18,.94);color:white;padding:28px;max-width:360px;border-left:2px solid var(--accent2)}
+.map-card h3{font-size:2rem;margin:7px 0}.map-card p{font-size:.82rem;color:#bbb}
+
+/* FOOTER */
+footer{background:#0d0d0c;color:white;padding:55px 0 22px}
+.footer-top{display:flex;justify-content:space-between;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer-brand p{color:#8f8d88;max-width:390px;margin-top:15px;font-size:.84rem}
+.social{display:flex;gap:9px;margin-top:18px}
+.social a{width:39px;height:39px;border:1px solid #363632;border-radius:50%;display:grid;place-items:center;color:#ddd;transition:.3s}
+.social a:hover{color:var(--accent2);border-color:var(--accent2);transform:translateY(-3px)}
+.footer-links{display:flex;gap:65px}
+.footer-links div{display:grid;gap:10px}
+.footer-links a{font-size:.76rem;color:#92908b}.footer-links a:hover{color:var(--accent2)}
+.copyright{display:flex;justify-content:space-between;padding-top:21px;color:#66645f;font-size:.67rem}
+.credit{color:var(--accent2)}
+
+/* FLOATING */
+.floats{position:fixed;right:20px;bottom:20px;z-index:1100;display:grid;gap:9px}
+.float{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;color:white;font-size:1.05rem;box-shadow:0 12px 30px rgba(0,0,0,.25);transition:.3s}
+.float:hover{transform:scale(1.08)}
+.wa{background:#1b9c57}.call{background:#2877b8}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s ease}
+.reveal.show{opacity:1;transform:none}
+.d1{transition-delay:.12s}.d2{transition-delay:.22s}.d3{transition-delay:.32s}
+.cursor{position:fixed;pointer-events:none;z-index:2000;width:15px;height:15px;border:1px solid var(--accent);border-radius:50%;transform:translate(-50%,-50%);mix-blend-mode:difference}
+
+@media(max-width:900px){
+ .nav-links{display:none}.menu{display:block}
+ .about-grid,.philosophy-grid,.review-layout,.contact-grid{grid-template-columns:1fr}
+ .services-grid{grid-template-columns:1fr 1fr}
+ .project:nth-child(1),.project:nth-child(2),.project:nth-child(3),.project:nth-child(4){grid-column:span 6}
+ .project{height:400px!important}
+ .stats-grid{grid-template-columns:1fr 1fr}
+ .footer-top{flex-direction:column}.footer-links{flex-wrap:wrap}
+}
+@media(max-width:600px){
+ .section{padding:78px 0}
+ .hero h1{font-size:4.6rem}.hero-sub{font-size:1rem}
+ .hero-actions .btn{width:100%}
+ .services-grid,.stats-grid{grid-template-columns:1fr}
+ .project-grid{grid-template-columns:1fr}
+ .project:nth-child(1),.project:nth-child(2),.project:nth-child(3),.project:nth-child(4){grid-column:span 1}
+ .project{height:390px!important}
+ .about-image{height:470px}.review-main{padding:32px}
+ .footer-links{gap:30px}.copyright{flex-direction:column}
+ .cursor{display:none}
+ .map-card{left:18px;right:18px;max-width:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+ <div class="container nav-inner">
+  <a href="#home" class="logo">
+   <div class="logo-symbol">A²</div>
+   <div class="logo-text"><strong>A2 STUDIO SPACES</strong><span>INTERIOR DESIGN STUDIO</span></div>
+  </a>
+  <div class="nav-links" id="navLinks">
+   <a href="#about">Studio</a><a href="#services">Services</a><a href="#projects">Projects</a>
+   <a href="#reviews">Reviews</a><a href="#faq">FAQ</a><a href="#contact" class="btn"><span>Start a Project</span></a>
+  </div>
+  <button class="menu" id="menu">☰</button>
+ </div>
+</nav>
+
+<header class="hero" id="home">
+ <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2200&q=90')"></div>
+ <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2200&q=90')"></div>
+ <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2200&q=90')"></div>
+ <div class="hero-content container reveal show">
+  <div class="hero-kicker"><i></i><span class="eyebrow" style="color:var(--accent2)">Pan India • Interior Design Studio</span></div>
+  <h1>Spaces that<br><em>feel like you.</em></h1>
+  <p class="hero-sub">Soulful • Functional • Timeless. We design interiors that reflect the people, stories and everyday rituals that make a space yours.</p>
+  <div class="hero-actions">
+   <a href="#projects" class="btn dark magnetic"><span>Explore Projects ↗</span></a>
+   <a href="https://wa.me/918770606427?text=Hello%20A2%20Studio%20Spaces%2C%20I%27d%20like%20to%20discuss%20an%20interior%20design%20project." target="_blank" class="btn magnetic"><span>WhatsApp Us</span></a>
+  </div>
+ </div>
+ <div class="hero-bottom">
+  <span class="hero-count" id="count">01 / 03</span>
+  <div class="dots"><button class="active" onclick="go(0)"></button><button onclick="go(1)"></button><button onclick="go(2)"></button></div>
+ </div>
+</header>
+
+<section class="stats">
+ <div class="container stats-grid">
+  <div class="stat reveal"><strong>01</strong><span>Design language</span></div>
+  <div class="stat reveal d1"><strong>02</strong><span>People-first process</span></div>
+  <div class="stat reveal d2"><strong>03</strong><span>Detail-led execution</span></div>
+  <div class="stat reveal d3"><strong>∞</strong><span>Pan India possibilities</span></div>
+ </div>
+</section>
+
+<section class="section about" id="about">
+ <div class="container about-grid">
+  <div class="about-copy reveal">
+   <div class="eyebrow">Inside A2 Studio</div>
+   <h2>Every space has a story.</h2>
+   <p>We believe great interiors should not look like they belong to someone else. A2 Studio Spaces creates thoughtful environments that balance emotion with everyday functionality — from the first conversation to the final detail.</p>
+   <div class="signature"><i></i>Crafting spaces that feel like you.</div>
+   <a href="#contact" class="btn magnetic"><span>Begin Your Story ↗</span></a>
+  </div>
+  <div class="about-image reveal d1">
+   <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1500&q=90" alt="A2 Studio inspired interior">
+   <div class="about-badge"><small>Our approach</small><strong>Warm. Personal. Considered.</strong></div>
+  </div>
+ </div>
+</section>
+
+<section class="section services" id="services">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="eyebrow">What we create</div><h2>Design with purpose,<br>beauty with meaning.</h2>
+   <p>From a single room to a complete home, our design approach brings spatial planning, materiality, styling and detail together.</p>
+  </div>
+  <div class="services-grid">
+   <article class="service reveal"><span class="service-num">01 / RESIDENTIAL</span><div class="service-icon">⌂</div><h3>Home Interiors</h3><p>Personalized homes shaped around your lifestyle, routines, taste and future.</p></article>
+   <article class="service reveal d1"><span class="service-num">02 / COMMERCIAL</span><div class="service-icon">□</div><h3>Workspaces</h3><p>Functional, expressive environments for offices, studios, boutiques and commercial spaces.</p></article>
+   <article class="service reveal d2"><span class="service-num">03 / TURNKEY</span><div class="service-icon">✦</div><h3>Design + Execution</h3><p>From concept and 3D visualization to materials, coordination and final styling.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="section projects" id="projects">
+ <div class="container">
+  <div class="section-head reveal"><div class="eyebrow">Selected spaces</div><h2>Interiors with<br>a point of view.</h2><p>Contemporary references for homes and spaces where texture, light and proportion do the talking.</p></div>
+  <div class="project-grid">
+   <article class="project reveal"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=90"><div class="project-info"><span>Residential</span><h3>Quiet Contemporary</h3></div></article>
+   <article class="project reveal d1"><img src="https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?auto=format&fit=crop&w=1500&q=90"><div class="project-info"><span>Living Space</span><h3>Warm Minimal</h3></div></article>
+   <article class="project reveal d2"><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1400&q=90"><div class="project-info"><span>Material Story</span><h3>Earth & Light</h3></div></article>
+   <article class="project reveal d3"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1500&q=90"><div class="project-info"><span>Interior Design</span><h3>Modern Soul</h3></div></article>
+  </div>
+ </div>
+</section>
+
+<section class="section philosophy">
+ <div class="container philosophy-grid">
+  <div class="reveal">
+   <div class="eyebrow">The A2 philosophy</div>
+   <div class="big-line" style="margin-top:22px">A space should be <span>beautiful</span> to look at, effortless to live in, and meaningful to remember.</div>
+  </div>
+  <div class="principles">
+   <div class="principle reveal"><b>01</b><div><h3>Soulful</h3><p>We listen to the people behind the floor plan, not just the measurements.</p></div></div>
+   <div class="principle reveal d1"><b>02</b><div><h3>Functional</h3><p>Good design works quietly in the background of everyday life.</p></div></div>
+   <div class="principle reveal d2"><b>03</b><div><h3>Timeless</h3><p>We favour proportion, materials and details that can live beyond passing trends.</p></div></div>
+   <div class="principle reveal d3"><b>04</b><div><h3>Personal</h3><p>Your space should carry your character rather than imitate a catalogue.</p></div></div>
+  </div>
+ </div>
+</section>
+
+<section class="section reviews" id="reviews">
+ <div class="container">
+  <div class="section-head reveal"><div class="eyebrow">Client voices</div><h2>Made for living.<br>Remembered for feeling.</h2></div>
+  <div class="review-layout">
+   <div class="review-main reveal">
+    <div class="stars">★★★★★</div>
+    <div class="quote">“The design feels personal, calm and completely us. Every corner has a purpose, but nothing feels forced.”</div>
+    <div class="reviewer">— Residential Interior Client</div>
+   </div>
+   <div class="review-side">
+    <div class="review-card reveal d1"><div class="stars">★★★★★</div><p>“A thoughtful design process that actually listened to what we needed.”</p><span>— Home Interior Project</span></div>
+    <div class="review-card reveal d2"><div class="stars">★★★★★</div><p>“Beautiful ideas, practical decisions and an elegant final space.”</p><span>— Interior Design Client</span></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section faq" id="faq">
+ <div class="container">
+  <div class="section-head reveal"><div class="eyebrow">FAQ</div><h2>Let’s clear the space.</h2></div>
+  <div class="faq-wrap">
+   <div class="faq-item reveal"><button class="faq-q">What kind of interiors do you design?<span>+</span></button><div class="faq-a"><p>We design residential and selected commercial interiors, with the scope tailored to the project's needs, style and level of execution.</p></div></div>
+   <div class="faq-item reveal"><button class="faq-q">Do you provide 3D designs before execution?<span>+</span></button><div class="faq-a"><p>Yes. The design workflow can include concept development, spatial planning, material direction and visual/3D representation before execution.</p></div></div>
+   <div class="faq-item reveal"><button class="faq-q">Can you handle complete interior execution?<span>+</span></button><div class="faq-a"><p>Yes, project scope can be discussed for design plus execution/turnkey requirements. Share your location, area and brief for a tailored conversation.</p></div></div>
+   <div class="faq-item reveal"><button class="faq-q">Do you work across India?<span>+</span></button><div class="faq-a"><p>The studio profile describes A2 Studio Spaces as Pan India, so you can reach out with your city and project details to discuss feasibility.</p></div></div>
+   <div class="faq-item reveal"><button class="faq-q">How do I start a project?<span>+</span></button><div class="faq-a"><p>Send your project type, city, approximate area, preferred style and timeline on WhatsApp. The studio can then take you through the next step.</p></div></div>
+  </div>
+ </div>
+</section>
+
+<section class="section contact" id="contact">
+ <div class="container contact-grid">
+  <div class="reveal">
+   <div class="eyebrow">Start a conversation</div>
+   <h2>Tell us about<br>your space.</h2>
+   <p class="contact-copy">A home, a workspace, a renovation or a new idea — send us the first few details and let's shape the next step together.</p>
+   <div class="details">
+    <div class="detail"><div class="detail-icon">☎</div><div><strong>Call / WhatsApp</strong><span>+91 87706 06427</span></div></div>
+    <div class="detail"><div class="detail-icon">◎</div><div><strong>Instagram</strong><span>@a2studio.spaces</span></div></div>
+    <div class="detail"><div class="detail-icon">⌖</div><div><strong>Service Area</strong><span>Pan India</span></div></div>
+   </div>
+  </div>
+  <form class="form reveal d1" onsubmit="sendWA(event)">
+   <h3>Project enquiry</h3>
+   <div class="field"><input id="name" required placeholder="Your name"></div>
+   <div class="field"><input id="phone" required placeholder="Phone number"></div>
+   <div class="field"><select id="type"><option>Home Interior</option><option>Commercial Interior</option><option>Renovation</option><option>Turnkey Project</option><option>Design Consultation</option></select></div>
+   <div class="field"><textarea id="message" placeholder="City, area, style, timeline..."></textarea></div>
+   <button class="btn dark magnetic" type="submit"><span>Send on WhatsApp ↗</span></button>
+  </form>
+ </div>
+</section>
+
+<section class="map">
+ <iframe loading="lazy" src="https://www.google.com/maps?q=India&output=embed"></iframe>
+ <div class="map-card reveal show">
+  <div class="eyebrow">Pan India</div>
+  <h3>A2 Studio Spaces</h3>
+  <p>Interior Design Studio crafting spaces that feel like you. Connect with the studio to discuss your city and project.</p>
+  <br><a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=India"><span>Open Map ↗</span></a>
+ </div>
+</section>
+
+<footer>
+ <div class="container">
+  <div class="footer-top">
+   <div class="footer-brand">
+    <div class="logo"><div class="logo-symbol" style="border-color:#ddd;color:#ddd">A²</div><div class="logo-text"><strong>A2 STUDIO SPACES</strong><span style="color:#777">INTERIOR DESIGN STUDIO</span></div></div>
+    <p>Crafting spaces that feel like you. Soulful • Functional • Timeless. Pan India.</p>
+    <div class="social">
+     <a href="https://www.instagram.com/a2studio.spaces/" target="_blank" aria-label="Instagram">◎</a>
+     <a href="https://wa.me/918770606427" target="_blank" aria-label="WhatsApp">◉</a>
+     <a href="tel:+918770606427" aria-label="Call">☎</a>
+    </div>
+   </div>
+   <div class="footer-links">
+    <div><a href="#about">Studio</a><a href="#services">Services</a><a href="#projects">Projects</a></div>
+    <div><a href="#reviews">Reviews</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div>
+   </div>
+  </div>
+  <div class="copyright"><span>© 2026 A2 Studio Spaces. All rights reserved.</span><span>Designed by <span class="credit">Marwar Infotech</span></span></div>
+ </div>
+</footer>
+
+<div class="floats">
+ <a href="tel:+918770606427" class="float call magnetic" aria-label="Call">☎</a>
+ <a href="https://wa.me/918770606427?text=Hello%20A2%20Studio%20Spaces%2C%20I%27d%20like%20to%20discuss%20an%20interior%20design%20project." target="_blank" class="float wa magnetic" aria-label="WhatsApp">◉</a>
+</div>
+
+<div class="cursor" id="cursor"></div>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
+
+const slides=[...document.querySelectorAll('.hero-slide')], dots=[...document.querySelectorAll('.dots button')];
+let current=0;
+function go(i){
+ current=i;
+ slides.forEach((s,n)=>s.classList.toggle('active',n===i));
+ dots.forEach((d,n)=>d.classList.toggle('active',n===i));
+ document.getElementById('count').textContent=`0${i+1} / 03`;
+}
+setInterval(()=>go((current+1)%3),5500);
+
+const obs=new IntersectionObserver(entries=>{
+ entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(e=>obs.observe(e));
+
+document.querySelectorAll('.faq-q').forEach(q=>{
+ q.addEventListener('click',()=>{
+  const item=q.parentElement;
+  document.querySelectorAll('.faq-item').forEach(i=>{if(i!==item)i.classList.remove('open')});
+  item.classList.toggle('open');
+  q.querySelector('span').textContent=item.classList.contains('open')?'−':'+';
+ });
+});
+
+document.getElementById('menu').addEventListener('click',()=>{
+ const links=document.getElementById('navLinks');
+ links.classList.toggle('open');
+});
+const mobileStyle=document.createElement('style');
+mobileStyle.textContent='@media(max-width:900px){.nav-links.open{display:flex;position:absolute;top:78px;left:4%;right:4%;background:#f4f0e9;padding:22px;flex-direction:column;align-items:stretch;border:1px solid rgba(23,23,20,.12);box-shadow:0 15px 35px rgba(0,0,0,.1)}.nav-links.open a{text-align:center;padding:7px}}';
+document.head.appendChild(mobileStyle);
+
+function sendWA(e){
+ e.preventDefault();
+ const n=document.getElementById('name').value.trim();
+ const p=document.getElementById('phone').value.trim();
+ const t=document.getElementById('type').value;
+ const m=document.getElementById('message').value.trim();
+ const text=`Hello A2 Studio Spaces,%0A%0AName: ${encodeURIComponent(n)}%0APhone: ${encodeURIComponent(p)}%0AProject: ${encodeURIComponent(t)}%0ADetails: ${encodeURIComponent(m)}`;
+ window.open(`https://wa.me/918770606427?text=${text}`,'_blank');
+}
+
+document.querySelectorAll('.magnetic').forEach(el=>{
+ el.addEventListener('mousemove',e=>{
+  const r=el.getBoundingClientRect();
+  const x=(e.clientX-r.left-r.width/2)*.12;
+  const y=(e.clientY-r.top-r.height/2)*.12;
+  el.style.transform=`translate(${x}px,${y}px)`;
+ });
+ el.addEventListener('mouseleave',()=>el.style.transform='');
+});
+
+const cursor=document.getElementById('cursor');
+window.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px'});
+</script>
+</body>
+</html>
